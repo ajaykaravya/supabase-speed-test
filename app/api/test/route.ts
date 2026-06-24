@@ -9,7 +9,7 @@ export async function GET() {
     const start = performance.now();
 
     const { data } = await supabase
-        .from("users")
+        .from("User")
         .select("*")
         .limit(50);
 
