@@ -11,7 +11,7 @@ export default function Home() {
 
     const start = performance.now();
 
-    const { data, error } = await supabase.from("User").select("*").limit(50);
+    const { data, error } = await supabase.from("users").select("*").limit(50);
 
     const end = performance.now();
 
