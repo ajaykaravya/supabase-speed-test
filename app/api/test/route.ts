@@ -10,5 +10,6 @@ export async function GET() {
   return Response.json({
     rows: users.length,
     time: Math.round(performance.now() - start),
+    users: users
   });
 }
