@@ -1,23 +1,13 @@
-import { PrismaClient } from "@prisma/client";
-
-const globalForPrisma = global as any;
-
-const prisma =
-  globalForPrisma.prisma || new PrismaClient();
-
-if (process.env.NODE_ENV !== "production") {
-  globalForPrisma.prisma = prisma;
-}
+import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   const start = performance.now();
 
-  const users = await prisma.users.findMany({
+  const users = await prisma.user.findMany({
     take: 50,
   });
 
   return Response.json({
-    region: process.env.VERCEL_REGION,
     rows: users.length,
     time: Math.round(performance.now() - start),
   });
